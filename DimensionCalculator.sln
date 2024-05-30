@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dimensionCalculator", "dimensionCalculator\dimensionCalculator.csproj", "{BB01A692-BD88-4001-B555-0CC7FF51DACD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB01A692-BD88-4001-B555-0CC7FF51DACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB01A692-BD88-4001-B555-0CC7FF51DACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB01A692-BD88-4001-B555-0CC7FF51DACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB01A692-BD88-4001-B555-0CC7FF51DACD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68134B07-584D-400F-A811-0CF19B3C709A}
+	EndGlobalSection
+EndGlobal
