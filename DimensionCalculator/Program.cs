@@ -46,24 +46,15 @@ namespace JumpOverFence
             XFont font2 = new XFont("Arial", 12, XFontStyleEx.Regular);
             XFont font3 = new XFont("Arial", 16, XFontStyleEx.Bold);
 
-            bool one = true;
+           
+            
+         
 
-            Console.WriteLine("Press 1 to Publish Dimensions and Press 2 to Publish Measurements.");
-            string s = Console.ReadLine();
-            if ( s != 1.ToString())
-            {
-                one = false;
-            }
+        gfx.DrawString("Uncle Babatunde's House Measurements", font1, XBrushes.IndianRed, new XRect((page1.Width/2)-200, 20, page1.Width, page1.Height), XStringFormats.TopLeft);
+         
+        gfx2.DrawString("Uncle Babatunde's House Dimensions", font1, XBrushes.IndianRed, new XRect((page2.Width / 2) - 200, 20, page2.Width, page2.Height), XStringFormats.TopLeft);
 
-            if (one == true)
-            {
-gfx.DrawString("Uncle Babatunde's House Measurements", font1, XBrushes.IndianRed, new XRect((page1.Width/2)-200, 20, page1.Width, page1.Height), XStringFormats.TopLeft);
-            }
-            else
-            {
-gfx2.DrawString("Uncle Babatunde's House Dimensions", font1, XBrushes.IndianRed, new XRect((page2.Width / 2) - 200, 20, page2.Width, page2.Height), XStringFormats.TopLeft);
-
-            }
+        
                                   
 
             int x =10; int y=50;
@@ -98,17 +89,20 @@ gfx2.DrawString("Uncle Babatunde's House Dimensions", font1, XBrushes.IndianRed,
 
 
             //// Save the document
-            const string filename = "Dim.pdf";
+            const string filename = "Mea.pdf";
             document.Save(filename);
             //// Save the document
             const string filename2 = "Dim.pdf";
-            document2.Save(filename);
-            if (one==true)
+            document2.Save(filename2);
+            Console.WriteLine("Press 1 to Publish Dimensions and Press 2 to Publish Measurements.");
+            int s = Convert.ToInt32(Console.ReadLine());
+
+            if (s==1)
             {
             Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
 
             }
-            else
+            if (s==2)
             {
                 Process.Start(new ProcessStartInfo(filename2) { UseShellExecute = true });
 
