@@ -30,28 +30,54 @@ namespace JumpOverFence
             Console.WriteLine(  );
 
             PdfDocument document = new PdfDocument();
-            document.Info.Title = "Dimensions";
+            document.Info.Title = "Floor Area";
+            PdfDocument document2 = new PdfDocument();
+            document2.Info.Title = "Dimensions";
 
             // Create an empty page
-            PdfPage page = document.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(page);
+            PdfPage page1 = document.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(page1);
+
+            PdfPage page2 = document2.AddPage();
+            XGraphics gfx2 = XGraphics.FromPdfPage(page2);
 
             // Create a font
             XFont font1 = new XFont("Arial", 20, XFontStyleEx.Bold);
             XFont font2 = new XFont("Arial", 12, XFontStyleEx.Regular);
             XFont font3 = new XFont("Arial", 16, XFontStyleEx.Bold);
 
-            gfx.DrawString("Uncle Babatunde's House Measurements", font1, XBrushes.IndianRed, new XRect((page.Width/2)-200, 20, page.Width, page.Height), XStringFormats.TopLeft);
+            bool one = true;
+
+            Console.WriteLine("Press 1 to Publish Dimensions and Press 2 to Publish Measurements.");
+            string s = Console.ReadLine();
+            if ( s != 1.ToString())
+            {
+                one = false;
+            }
+
+            if (one == true)
+            {
+gfx.DrawString("Uncle Babatunde's House Measurements", font1, XBrushes.IndianRed, new XRect((page1.Width/2)-200, 20, page1.Width, page1.Height), XStringFormats.TopLeft);
+            }
+            else
+            {
+gfx2.DrawString("Uncle Babatunde's House Dimensions", font1, XBrushes.IndianRed, new XRect((page2.Width / 2) - 200, 20, page2.Width, page2.Height), XStringFormats.TopLeft);
+
+            }
+                                  
 
             int x =10; int y=50;
+                                
 
             for (int i = 0; i < Rooms.Length; i++)
             {
                 
-                //// Draw the text
-                gfx.DrawString($"{i+1}. {Rooms[i]} : Floor Area = {Math.Round(Lenght[i] * Breadth[i], 1)} m², Wall Area={Math.Round(Height[i] * (2 * (Lenght[i] + Breadth[i])), 1)}  m²", font2, XBrushes.Black, new XRect(x, y, page.Width, page.Height), XStringFormats.TopLeft);
+                //// Floor area
+                gfx.DrawString($"{i+1}. {Rooms[i]} : Floor Area = {Math.Round(Lenght[i] * Breadth[i], 1)} m², Wall Area={Math.Round(Height[i] * (2 * (Lenght[i] + Breadth[i])), 1)}  m²", font2, XBrushes.Black, new XRect(x, y, page1.Width, page1.Height), XStringFormats.TopLeft);
                 FloorArea=FloorArea + Math.Round(Lenght[i] * Breadth[i], 1);
                 WallArea = WallArea + Math.Round(Height[i] * (2 * (Lenght[i] + Breadth[i])), 1);
+
+                gfx2.DrawString($" {i + 1}. {Rooms[i]} : Lenght:{Lenght[i]}m Breadth:{Breadth[i]}m  Height:{Height[i]}m ", font2, XBrushes.Black, new XRect(x, y, page2.Width, page2.Height), XStringFormats.TopLeft);
                 y = y + 15;
 
                
@@ -59,10 +85,14 @@ namespace JumpOverFence
             y = y + 15;
 
 
-            gfx.DrawString($"Total Floor Area = {FloorArea} m²", font3, XBrushes.IndianRed, new XRect((page.Width / 2) - 280, y, page.Width, page.Height), XStringFormats.TopLeft);
+
+            gfx.DrawString($"Total Floor Area = {FloorArea} m²", font3, XBrushes.IndianRed, new XRect((page1.Width / 2) - 280, y, page1.Width, page1.Height), XStringFormats.TopLeft);
             y = y + 20;
-            gfx.DrawString($"Total Wall Area = {Math.Round(WallArea, 1)} m²", font3, XBrushes.IndianRed, new XRect((page.Width / 2) - 280, y, page.Width, page.Height), XStringFormats.TopLeft);
+            gfx.DrawString($"Total Wall Area = {Math.Round(WallArea, 1)} m²", font3, XBrushes.IndianRed, new XRect((page1.Width / 2) - 280, y, page1.Width, page1.Height), XStringFormats.TopLeft);
             y = y + 35;
+
+            
+
 
 
 
@@ -70,13 +100,20 @@ namespace JumpOverFence
             //// Save the document
             const string filename = "Dim.pdf";
             document.Save(filename);
-            Console.WriteLine("Press Y to Publish pdf or C to Close.");
-            string s =Console.ReadLine();
-            if (s=="Y")
+            //// Save the document
+            const string filename2 = "Dim.pdf";
+            document2.Save(filename);
+            if (one==true)
             {
             Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
 
             }
+            else
+            {
+                Process.Start(new ProcessStartInfo(filename2) { UseShellExecute = true });
+
+            }
+
         }
 
         
